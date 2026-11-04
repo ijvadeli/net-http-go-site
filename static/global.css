@@ -1,0 +1,13 @@
+body {
+    background-color: black;
+    color: darkgrey;
+    font-family: monospace;
+}
+
+.green {
+    color: seagreen;
+}
+
+.blue {
+    color: steelblue;
+}
