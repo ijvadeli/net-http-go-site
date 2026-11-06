@@ -1,16 +1,17 @@
 package main
 
 import (
-	"fmt"
-	"html"
 	"net/http"
 )
 
-func testHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Path: %q", html.EscapeString(r.URL.Path))
-}
-
 func main() {
-	http.HandleFunc("/", testHandler)
-	http.ListenAndServe(":8080", nil)
+	// Create router instance so any third party packages can't create new routes
+	router := http.NewServeMux()
+
+	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Hello World"))
+	})
+
+	// Use the router
+	http.ListenAndServe(":8080", router)
 }
