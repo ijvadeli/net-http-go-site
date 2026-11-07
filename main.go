@@ -13,5 +13,6 @@ func main() {
 	})
 
 	// Use the router
+	print("Hosting on port :8080")
 	http.ListenAndServe(":8080", router)
 }
